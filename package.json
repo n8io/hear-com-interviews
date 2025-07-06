@@ -1,0 +1,25 @@
+{
+	"name": "hear-com-interviews",
+	"version": "1.0.0",
+	"description": "",
+	"scripts": {
+		"dev": "node --watch src/index.ts",
+		"test": "vitest",
+		"test:coverage": "npm run --silent test -- --coverage",
+		"start": "node src/index.ts"
+	},
+	"engines": {
+		"node": "^24",
+		"npm": "^11"
+	},
+	"main": "index.ts",
+	"keywords": [],
+	"license": "UNLICENSED",
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^24",
+		"@vitest/coverage-v8": "^3",
+		"typescript": "^5",
+		"vitest": "^3"
+	}
+}
