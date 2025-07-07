@@ -8,8 +8,7 @@ Your goal is to **refactor the code for clarity, maintainability, and extensibil
 
 ```bash
 # Pull down repo
-git clone git@github.com:n8io/hear-com-interviews.git
-cd hear-com-interviews
+git clone https://github.com/n8io/hear-com-interviews.git && cd hear-com-interviews
 
 # Ensure you're using the proper Node version
 nvm install
