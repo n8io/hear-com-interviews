@@ -27,5 +27,6 @@ npm test
 2. Talk through your thought process, share your intent with the interviewer
 3. Refactor the code
 4. Do not modify any of the existing tests, assume they are stable and correct. You may add some if you so choose.
+5. Autocomplete is fine, but for this exercise we prefer you DO NOT use chat/AI based tools to do the work.
 
 🤝 Good luck — we’re excited to see how you approach making this code better!
