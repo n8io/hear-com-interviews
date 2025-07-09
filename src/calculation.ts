@@ -1,7 +1,9 @@
+import { formatCartSummary } from './utils.ts'
+
 /**
  * Calculate the subtotal of items in the cart.
  */
-function calculateSubtotal(items: { id: string; price: number; quantity: number }[]): number {
+function calculateSubtotal(items: { price: number; quantity: number; id: string }[]): number {
   let total = 0
   for (let i = 0; i < items.length; i++) {
     total = total + items[i].price * items[i].quantity
@@ -13,7 +15,10 @@ function calculateSubtotal(items: { id: string; price: number; quantity: number 
  * Determine applicable discount based on quantity or subtotal rules.
  * - 5% discount for any item with quantity >= 10
  */
-function calculateDiscount(items: { id: string; price: number; quantity: number }[], subtotal: number): number {
+function calculateDiscount(
+  items: { id: string; price: number; quantity: number; name?: string }[],
+  subtotal: number,
+): number {
   const hasBulkItem = items.some((item) => item.quantity >= 10)
   const bulkDiscount = hasBulkItem ? subtotal * 0.05 : 0
 
@@ -25,7 +30,7 @@ function calculateDiscount(items: { id: string; price: number; quantity: number 
 /**
  * Calculate cart totals with discounts.
  */
-export function calculateCartTotals(items: { id: string; price: number; quantity: number }[]): {
+export function calculateCartTotals(items: { quantity: number; id: string; price: number }[]): {
   subtotal: number
   discount: number
   grandTotal: number
@@ -38,30 +43,11 @@ export function calculateCartTotals(items: { id: string; price: number; quantity
 }
 
 /**
- * Create a display summary string for the cart.
- */
-export function formatCartSummary(
-  items: { id: string; price: number; quantity: number }[],
-  totals: { subtotal: number; discount: number; grandTotal: number },
-): string {
-  const lines = [
-    'Cart Summary:',
-    '----------------',
-    ...items.map(
-      (item) => `${item.quantity} x Item ${item.id} @ $${item.price} = $${(item.price * item.quantity).toFixed(2)}`,
-    ),
-    '----------------',
-    `Subtotal: $${totals.subtotal.toFixed(2)}`,
-    `Discount: -$${totals.discount.toFixed(2)}`,
-    `Grand Total: $${totals.grandTotal.toFixed(2)}`,
-  ]
-  return lines.join('\n')
-}
-
-/**
  * Entry point handler function.
  */
-export function handleCartRequest(req: { body: { items: { id: string; price: number; quantity: number }[] } }): {
+export function handleCartRequest(req: {
+  body: { items: { id: string; price: number; quantity: number; sku?: string }[] }
+}): {
   status: number
   body: string
 } {

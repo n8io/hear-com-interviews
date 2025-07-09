@@ -22,7 +22,7 @@ npm test
 
 ## ✅ Your Tasks
 
-1. Identify code smells
+1. Identify code smells in `src/calculation.ts`
 2. Talk through your thought process, share your intent with the interviewer
 3. Refactor the code
 4. Do not modify any of the existing tests, assume they are stable and correct. You may add some if you so choose.

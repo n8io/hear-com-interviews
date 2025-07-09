@@ -1,4 +1,4 @@
-import { calculateCartTotals, formatCartSummary, handleCartRequest } from './calculation.ts'
+import { calculateCartTotals, handleCartRequest } from './calculation.ts'
 
 describe('cartDiscount', () => {
   const baseItems = [
@@ -21,14 +21,6 @@ describe('cartDiscount', () => {
     const items = [{ id: 'D', price: 600, quantity: 1 }]
     const totals = calculateCartTotals(items)
     expect(totals).toEqual({ subtotal: 600, discount: 60, grandTotal: 540 })
-  })
-
-  it('formats a correct cart summary', () => {
-    const totals = calculateCartTotals(baseItems)
-    const summary = formatCartSummary(baseItems, totals)
-    expect(summary).toMatch(/Subtotal: \$80\.00/)
-    expect(summary).toMatch(/Discount: -\$0\.00/)
-    expect(summary).toMatch(/Grand Total: \$80\.00/)
   })
 
   it('handler returns 200 and summary', () => {
